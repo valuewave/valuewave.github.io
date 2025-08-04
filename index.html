@@ -2,55 +2,657 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ValueWave</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValueWave - Innovative Mobile Apps</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #667eea;
+      text-decoration: none;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+    }
+    
+    .nav-menu a:hover {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+      color: white;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Apps Section */
+    .apps-section {
+      padding: 4rem 0;
+      background: white;
+      border-radius: 30px 30px 0 0;
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #333;
+    }
+    
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .app-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .app-card:hover .app-icon {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .app-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    
+    .app-category {
+      color: #667eea;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .app-description {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .app-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .app-features li {
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+    
+    .play-store-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+      margin-top: auto;
+      text-align: center;
+      width: fit-content;
+    }
+    
+    .play-store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: 4rem 0;
+      background: #f8f9fa;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .about-text p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #667eea;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .about-image {
+      text-align: center;
+    }
+    
+    .about-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 4rem 0;
+      background: white;
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .contact-info p {
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .contact-details {
+      list-style: none;
+    }
+    
+    .contact-details li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+    
+    .contact-details li i {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: #667eea;
+    }
+    
+    .contact-form {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Footer */
+    .footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .app-card {
+        padding: 1.5rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>ValueWave</h1>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">ValueWave</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <h2>MindInk – Offline Diary App</h2>
-  <p>A minimalist, offline diary app by ValueWave.</p>
-  <p>Now available on Google Play.</p>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>ValueWave</h1>
+      <p>Creating innovative mobile experiences that make life easier and more enjoyable</p>
+    </div>
+  </section>
 
-  
-  <h2>LunchRoulette</h2>
-  <p><strong>Can't decide what to eat?</strong> Spin the Lunch Roulette and let fate choose your meal!</p>
-  <p>
-    Lunch Roulette helps you decide your next lunch with a fun and simple spin of a wheel. Just tap to spin and discover your next delicious meal. You can easily add or remove menu items to customize your list.
-  </p>
+  <!-- Apps Section -->
+  <section id="apps" class="apps-section">
+    <div class="container">
+      <h2 class="section-title">Our Apps</h2>
+      
+      <div class="apps-grid">
+        <!-- MindInk App -->
+        <div class="app-card">
+          <div class="app-icon" style="background: none; border: none; padding: 0;">
+            <img src="https://play-lh.googleusercontent.com/jmIN-wYGvMHYC-YQMaMJPM9CkLsJqj0C2jWVRoctPPIfnPWicd8IlqmS0xtkjlMn5ifi=w240-h480-rw" 
+                 alt="MindInk App Icon" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+          </div>
+          <h3 class="app-title">MindInk</h3>
+          <div class="app-category">Productivity</div>
+          <p class="app-description">
+            Your personal, private journaling space designed for simplicity and peace of mind. 
+            Write your thoughts in a distraction-free environment with complete offline functionality.
+          </p>
+          <ul class="app-features">
+            <li>✅ 100% Offline - Your data stays on your device</li>
+            <li>✅ No Sign-Up Required - Start writing instantly</li>
+            <li>✅ Clean & Minimal UI - Focus on your words</li>
+            <li>✅ Calendar View - Browse past entries by date</li>
+            <li>✅ Multi-language Support</li>
+            <li>✅ Light & Dark Themes</li>
+          </ul>
+          <a href="https://play.google.com/store/apps/details?id=com.valuewave.mindink" 
+             class="play-store-btn" target="_blank">
+            Download on Google Play
+          </a>
+        </div>
 
-  <ul>
-    <li>🎯 Customize your menu list</li>
-    <li>🎡 Fun and intuitive roulette spin</li>
-    <li>📱 Works offline with PWA support</li>
-    <li>💾 Menus saved with local storage</li>
-  </ul>
+        <!-- Lunch Roulette App -->
+        <div class="app-card">
+          <div class="app-icon" style="background: none; border: none; padding: 0;">
+            <img src="https://play-lh.googleusercontent.com/foI4aY4E3zwGqClU2w3Bf0r2-5jG_l19X5KpBiVIvWOXG_NCf7s22MaBooXrbWR04Xo=w240-h480-rw" 
+                 alt="Lunch Roulette App Icon" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+          </div>
+          <h3 class="app-title">Lunch Roulette</h3>
+          <div class="app-category">Entertainment</div>
+          <p class="app-description">
+            Can't decide what to eat? Spin the Lunch Roulette and let fate choose your meal! 
+            Discover nearby restaurants based on your location with a fun roulette spin.
+          </p>
+          <ul class="app-features">
+            <li>📍 Location-Based Suggestions</li>
+            <li>🎯 Fun Roulette Spin</li>
+            <li>🗺️ Map Integration</li>
+            <li>📱 Easy Social Sharing</li>
+            <li>🌍 Multilingual Support</li>
+            <li>📸 Share on KakaoTalk, Instagram, Twitter</li>
+          </ul>
+          <a href="https://play.google.com/store/apps/details?id=com.valuewave.lunch_roulette" 
+             class="play-store-btn" target="_blank">
+            Download on Google Play
+          </a>
+        </div>
 
-  <p>Try it now and make lunch decisions easy and fun!</p>
-  
-  <h2>StackUp – Tap to Build the Tallest Tower!</h2>
-  <p>
-StackUp is a minimalist and addictive arcade game where your goal is simple: 
-tap at the right moment to stack the moving blocks as high as you can. 
-Perfect timing means a perfect stack — but miss, and your tower gets smaller!
-</p>
+        <!-- StackUp App -->
+        <div class="app-card">
+          <div class="app-icon" style="background: none; border: none; padding: 0;">
+            <img src="https://play-lh.googleusercontent.com/5DBH2tqsOhfnpbs3OyRA6TLint6LJx-KDtrsWOLwXf8EnCI5K-cvFPDJ6lpYCLeFdg7r=w240-h480-rw" 
+                 alt="StackUp App Icon" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+          </div>
+          <h3 class="app-title">StackUp</h3>
+          <div class="app-category">Arcade Game</div>
+          <p class="app-description">
+            Build your tower, one block at a time! A minimalist, addictive arcade game where 
+            perfect timing means a perfect stack. How high can you go?
+          </p>
+          <ul class="app-features">
+            <li>🎮 Simple one-tap gameplay</li>
+            <li>🎨 Relaxing color transitions</li>
+            <li>🎵 Satisfying sound effects</li>
+            <li>♾️ Endless mode</li>
+            <li>📱 Lightweight and smooth</li>
+            <li>🔒 No login required</li>
+          </ul>
+          <a href="https://play.google.com/store/apps/details?id=com.valuewave.stackup" 
+             class="play-store-btn" target="_blank">
+            Download on Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>
-This game is easy to play, yet hard to master. How high can you go?
-</p>
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About ValueWave</h2>
+          <p>
+            ValueWave is a mobile app development studio focused on creating innovative, 
+            user-friendly applications that solve real-world problems. We believe in the power 
+            of simplicity and intuitive design to enhance everyday experiences.
+          </p>
+          <p>
+            Our mission is to develop apps that not only meet users' needs but exceed their 
+            expectations through thoughtful design, reliable functionality, and seamless user 
+            experiences. From productivity tools to entertainment apps, we strive to create 
+            solutions that make life easier and more enjoyable.
+          </p>
+          <p>
+            Based in South Korea, our team combines technical expertise with creative vision 
+            to deliver apps that users love and trust.
+          </p>
+          
+          <!-- <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Apps Published</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Offline First</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Categories</div>
+            </div>
+          </div> -->
+        </div>
+        
+        <div class="about-image">
+          <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+            🚀
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<b>Features:</b>
-<ul>
-  <li>Simple one-tap gameplay</li>
-  <li>Clean and relaxing visuals</li>
-  <li>Perfect for short or long play sessions</li>
-  <li>Satisfying sound effects</li>
-  <li>No login required</li>
-  <li>No personal data collected</li>
-</ul>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>
+            Have questions about our apps or want to collaborate? We'd love to hear from you! 
+            Reach out to us and we'll get back to you as soon as possible.
+          </p>
+          
+          <ul class="contact-details">
+            <li>
+              <i>👨‍💻</i>
+              <div>
+                <strong>Developer</strong><br>
+                김종민 (Jongmin Kim)
+              </div>
+            </li>
+            <li>
+              <i>📧</i>
+              <div>
+                <strong>Email</strong><br>
+                <a href="mailto:jmkim9@gmail.com" style="color: #667eea; text-decoration: none;">jmkim9@gmail.com</a><br>
+                <!-- <a href="mailto:valuewave7@gmail.com" style="color: #667eea; text-decoration: none;">valuewave7@gmail.com</a> -->
+              </div>
+            </li>
+            <li>
+              <i>🌍</i>
+              <div>
+                <strong>Location</strong><br>
+                South Korea
+              </div>
+            </li>
+            <li>
+              <i>📱</i>
+              <div>
+                <strong>Support</strong><br>
+                Available through email for all our apps
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- <div class="contact-form">
+          <h3 style="margin-bottom: 1.5rem; color: #333;">Send us a Message</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </section>
 
-<p>
-Challenge yourself and beat your high score! StackUp is a great way to test your timing and focus. Start stacking now!
-</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 ValueWave. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
 
+
+
+<!-- 
+@https://play.google.com/store/apps/details?id=com.valuewave.lunch_roulette 
+@https://play.google.com/store/apps/details?id=com.valuewave.stackup 
+@https://play.google.com/store/apps/details?id=com.valuewave.mindink 
+ -->
